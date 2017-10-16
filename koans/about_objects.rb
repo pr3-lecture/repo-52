@@ -31,13 +31,15 @@ class AboutObjects < Neo::Koan
   end
 
   def test_small_integers_have_fixed_ids
-    assert_equal __, 0.object_id
-    assert_equal __, 1.object_id
-    assert_equal __, 2.object_id
-    assert_equal __, 100.object_id
+    assert_equal 1, 0.object_id
+    assert_equal 3, 1.object_id
+    assert_equal 5, 2.object_id
+    assert_equal 201, 100.object_id
 
     # THINK ABOUT IT:
     # What pattern do the object IDs for small integers follow?
+
+    # 2 * i + 1 ; Fixnums.
   end
 
   def test_clone_creates_a_different_object
