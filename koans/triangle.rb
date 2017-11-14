@@ -14,7 +14,13 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
-  # WRITE THIS CODE
+  raise TriangleError, "Alle Seite müssen positiv sein" if [a,b,c].map { |x| x <= 0 }.all?
+  raise TriangleError, "Fehler" if ( a + b + c - ( 2 *  [a,b,c].max ) <= 0  )
+  case [a,b,c].uniq.size
+    when 1 then :equilateral
+    when 2 then :isosceles
+    when 3 then :scalene
+  end
 end
 
 # Error class used in part 2.  No need to change this code.
