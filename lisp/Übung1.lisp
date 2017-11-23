@@ -33,23 +33,17 @@
 ; my-lengthR zur Berechnung der Länge einer Liste und aller eingeschachtelten
 ; Listen.
 
-; TODO - does not work
-(defun my-lengthR (list)
-    (if list
-        (1+ (my-lengthR (cdr list)))
-    0)
-) 
-
-
+; TODO
 
 ; (e) Listen umkehren: Schreiben eine Funktion my-reverse zum Umkehren 
 ; einer Liste.
 (defun my-reverse (list)
-    (cond
-        ((null list) '())
+    (cond ((null list) '())
         (T 
-            (append (my-reverse (cdr list))
-            (list (car list)))
+            (append
+                (my-reverse (cdr list))
+                (list (car list))
+            )
         )
 	)
 )
@@ -57,7 +51,19 @@
 ; (f) Geschachtelte Listen umkehren: Schreiben eine Funktion my-reverseR 
 ; zum Umkehren einer Liste.
 
-; TODO
+(defun my-reverseR (list)
+  (cond ((null list) '()) ; ist list die leere Liste?
+    ((listp (car list)) ; wenn das aktuelle Element eine Liste ist
+        (append (my-reverseR (cdr list)) (list (my-reverseR (car list))))
+    )
+    (T ; sonst wie oben
+        (append 
+            (my-reverseR (cdr list)) 
+            (list (car list))
+        )
+    )
+  )
+)
 
 ; Aufgabe 2
 ;----------
@@ -126,7 +132,6 @@
 ; B
 ; C
 ; D
-
 
 (defun tree-insert (node tree)
     (cond 
