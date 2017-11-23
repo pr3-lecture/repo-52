@@ -43,14 +43,14 @@
 
 ; (e) Listen umkehren: Schreiben eine Funktion my-reverse zum Umkehren 
 ; einer Liste.
-(defun my-reverse (myList)
-    (do (
-            (list myList (rest myList))
-            (reversed '() (list* (first list) reversed))
+(defun my-reverse (list)
+    (cond
+        ((null list) '())
+        (T 
+            (append (my-reverse (cdr list))
+            (list (car list)))
         )
-        (
-            (endp myList) reversed)
-    )
+	)
 )
 
 ; (f) Geschachtelte Listen umkehren: Schreiben eine Funktion my-reverseR 
