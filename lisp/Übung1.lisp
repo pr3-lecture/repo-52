@@ -24,9 +24,11 @@
 ; (c) Länge einer Liste berechnen: Schreiben Sie eine Funktion my-length
 ; zur Berechnung der Länge einer Liste.
 (defun my-length (list)
-    (if list
-        (1+ (my-length (cdr list)))
-    0)
+    (cond ((null list) 0)
+        (T
+            (1+ (my-length (cdr list)))
+        )
+    )
 )
 
 ; (d) Länge einer geschachtelten Liste berechnen: Schreiben Sie eine Funktion 
@@ -52,17 +54,20 @@
 ; zum Umkehren einer Liste.
 
 (defun my-reverseR (list)
-  (cond ((null list) '()) ; ist list die leere Liste?
-    ((listp (car list)) ; wenn das aktuelle Element eine Liste ist
-        (append (my-reverseR (cdr list)) (list (my-reverseR (car list))))
-    )
-    (T ; sonst wie oben
-        (append 
-            (my-reverseR (cdr list)) 
-            (list (car list))
+    (cond ((null list) '()) ; ist list die leere Liste?
+        ((listp (car list)) ; wenn das aktuelle Element eine Liste ist
+            (append 
+                (my-reverseR (cdr list)) 
+                (list (my-reverseR (car list)))
+            )
+        )
+        (T ; sonst wie oben
+            (append 
+                (my-reverseR (cdr list)) 
+                (list (car list))
+            )
         )
     )
-  )
 )
 
 ; Aufgabe 2
