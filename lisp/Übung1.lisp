@@ -133,6 +133,7 @@
 ; C
 ; D
 
+; füge Knoten in Baum ein
 (defun tree-insert (node tree)
     (cond 
         ((null tree) (create-tree-structure node nil nil)) ; wenn der Baum null ist, erzeuge neuen Baum
