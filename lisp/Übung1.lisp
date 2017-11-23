@@ -26,7 +26,7 @@
 (defun my-length (list)
     (cond ((null list) 0)
         (T
-            (1+ (my-length (cdr list)))
+            (+ 1 (my-length (cdr list)))
         )
     )
 )
@@ -34,8 +34,17 @@
 ; (d) Länge einer geschachtelten Liste berechnen: Schreiben Sie eine Funktion 
 ; my-lengthR zur Berechnung der Länge einer Liste und aller eingeschachtelten
 ; Listen.
-
-; TODO
+(defun my-lengthR (list)
+    (cond ((null list) 0) ; länge 0 bei leerer Liste
+        ((listp (car list)) 
+            (+ (my-lengthR (car list)) (my-lengthR (cdr list))) ; wenn erstes Element eine Liste ist,
+            ; addiere das Ergebnis der inneren Liste mit dem Rest
+        ) 
+        (T
+            (+ 1 (my-lengthR (cdr list))) ; bei Atom addiere 1 und rekursiv mit dem Rest der Liste
+        )
+    )
+)
 
 ; (e) Listen umkehren: Schreiben eine Funktion my-reverse zum Umkehren 
 ; einer Liste.
