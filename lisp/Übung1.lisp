@@ -1,4 +1,4 @@
-;Dimitry Nagorny, xxxxxxx, repo-50
+;Dimitry Nagorny, 1410351, repo-50
 ;Philipp Minges, 1426312, repo-52
 
 ; Aufgabe 1
@@ -10,6 +10,8 @@
 (defun rotiere (arg1)
     (append(rest arg1) (list (first arg1)))
 )
+(print "Rotiere Liste (eins zwei drei vier):")
+(print (rotiere '(eins zwei drei vier)))
 
 ; (b) Element einfugen : Schreiben Sie eine Funktion neues-vorletztes , 
 ; die eine Liste als Argument erhält und eine neue Liste zuruckliefert, 
@@ -19,10 +21,12 @@
         while (rest l)
             collect (first l))
 )
-
-(defun nve(e l) 
+(defun neues-vorletztes(e l) 
     (append (append (abl l) (list e) (last l)))
 )
+(print "Neues Vorletztes 'dreieinhalb zur Liste (eins zwei drei vier):")
+(print (neues-vorletztes 'dreieinhalb '(eins zwei drei vier)))
+
 
 ; (c) Länge einer Liste berechnen: Schreiben Sie eine Funktion my-length
 ; zur Berechnung der Länge einer Liste.
@@ -33,6 +37,8 @@
         )
     )
 )
+(print "Länge der Liste (eins zwei drei vier):")
+(print (my-length '(eins zwei drei vier)))
 
 ; (d) Länge einer geschachtelten Liste berechnen: Schreiben Sie eine Funktion 
 ; my-lengthR zur Berechnung der Länge einer Liste und aller eingeschachtelten
@@ -48,6 +54,8 @@
         )
     )
 )
+(print "Verschachtelte Länge der Liste (eins zwei (zwei (zwei drei) eins) drei vier):")
+(print (my-lengthR '(eins zwei (zwei (zwei drei) eins) drei vier)))
 
 ; (e) Listen umkehren: Schreiben eine Funktion my-reverse zum Umkehren 
 ; einer Liste.
@@ -61,10 +69,11 @@
         )
 	)
 )
+(print "Umdrehen der Liste (eins zwei (zwei (zwei drei) eins) drei vier):")
+(print (my-reverse '(eins zwei (zwei (zwei drei) eins) drei vier)))
 
 ; (f) Geschachtelte Listen umkehren: Schreiben eine Funktion my-reverseR 
 ; zum Umkehren einer Liste.
-
 (defun my-reverseR (list)
     (cond ((null list) '()) ; ist list die leere Liste?
         ((listp (car list)) ; wenn das aktuelle Element eine Liste ist
@@ -81,6 +90,8 @@
         )
     )
 )
+(print "Verschachteltes Umdrehen der Liste (eins zwei (zwei (zwei drei) eins) drei vier):")
+(print (my-reverseR '(eins zwei (zwei (zwei drei) eins) drei vier)))
 
 ; Aufgabe 2
 ;----------
@@ -140,16 +151,6 @@
     )
 )
 
-; dolist (var list-form [result-form]) declaration* {tag | statement}*
-; (dolist 
-;   (x '(a b c d)) (print x)
-; )
-; Für jedes Element "x" der Liste, wird print ausgeführt. - Ergebnis:
-; A
-; B
-; C
-; D
-
 ; füge Knoten in Baum ein
 (defun tree-insert (node tree)
     (cond 
@@ -159,6 +160,9 @@
         ((> node (root tree)) (create-tree-structure (root tree) (left-follower tree) (tree-insert node (right-follower tree))))
     )
 )
+(print "Binärbaum (3 5 8 4 2):")
+(create-tree '(3 5 8 4 2))
+(print tree)
 
 ; (b) Baumtraversierung: Schreiben Sie 3 Funktionen zum Traversieren eines 
 ; Binärbaums, bei der auch die Knoteninhalte ausgegeben werden.
@@ -173,6 +177,8 @@
         )
     )
 )
+(print "Inorder vom Binärbaum (3 5 8 4 2):")
+(inorder tree)
 
 ; postorder - TODO letzte Zahl doppelt
 (defun postorder (tree)
@@ -184,6 +190,8 @@
         )
     )
 )
+(print "Postorder vom Binärbaum (3 5 8 4 2):")
+(postorder tree)
 
 ; preoder
 (defun preorder (tree)
@@ -195,3 +203,5 @@
         )
     )
 )
+(print "Preorder vom Binärbaum (3 5 8 4 2):")
+(preorder tree)
