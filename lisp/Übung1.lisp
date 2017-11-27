@@ -160,8 +160,35 @@
 ; (b) Baumtraversierung: Schreiben Sie 3 Funktionen zum Traversieren eines 
 ; Binärbaums, bei der auch die Knoteninhalte ausgegeben werden.
 
-;inorder
+; inorder
+(defun inorder (tree)
+    (cond ((null tree))
+        (T 
+            (inorder (left-follower tree))
+            (print (root tree))
+            (inorder (right-follower tree))
+        )
+    )
+)
 
-;postorder
+; postorder - TODO letzte Zahl doppelt
+(defun postorder (tree)
+    (cond ((null tree))
+        (T 
+            (postorder (left-follower tree))
+            (postorder (right-follower tree))
+            (print (root tree))
+        )
+    )
+)
 
-;preorder
+; preoder
+(defun preorder (tree)
+    (cond ((null tree))
+        (T 
+            (print (root tree))
+            (preorder (left-follower tree))
+            (preorder (right-follower tree))
+        )
+    )
+)
