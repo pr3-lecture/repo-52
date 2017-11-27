@@ -1,3 +1,6 @@
+;Dimitry Nagorny, xxxxxxx, repo-50
+;Philipp Minges, 1426312, repo-52
+
 ; Aufgabe 1
 ;----------
 
