@@ -180,7 +180,7 @@
 (print "Inorder vom Binärbaum (3 5 8 4 2):")
 (inorder tree)
 
-; postorder - TODO letzte Zahl doppelt
+; postorder
 (defun postorder (tree)
     (cond ((null tree))
         (T 
