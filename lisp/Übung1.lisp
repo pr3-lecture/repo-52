@@ -22,7 +22,7 @@
             collect (first l))
 )
 (defun neues-vorletztes(e l) 
-    (append (append (abl l) (list e) (last l)))
+    (append (append (abl l) (list e)) (last l))
 )
 (print "Neues Vorletztes 'dreieinhalb zur Liste (eins zwei drei vier):")
 (print (neues-vorletztes 'dreieinhalb '(eins zwei drei vier)))
