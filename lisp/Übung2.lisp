@@ -170,9 +170,24 @@
 
 ; remove
 (defun tree-remove (val tree)
-	(if (tree-containsValue val tree)
-		"removed value" ;TODO
-		"Tree has no such value"
+	(cond
+		((null (root tree)) nil)
+    	((and (= val (root tree)) (= (tree-height tree) 1)) nil)
+    	((and (= val (root tree)) (null (right-follower tree)))
+        	(create-tree-structure (tree-maxValue (left-follower tree)) (remove (left-follower tree) (tree-maxValue (left-follower tree))) nil)
+    	)
+    	(
+      		(= val (root tree))
+        	(create-tree-structure (tree-minValue (right-follower tree)) (left-follower tree) (tree-remove (tree-minValue (right-follower tree)) (right-follower tree)))
+    	)
+    	(
+      	(< val (root tree))
+        	(create-tree-structure (root tree) (tree-remove val (left-follower tree)) (right-follower tree))
+    	)
+    	(
+      	(> val (root tree))
+        	(create-tree-structure (root tree) (left-follower tree) (tree-remove val (right-follower tree)))
+    	)
 	)
 )
 
