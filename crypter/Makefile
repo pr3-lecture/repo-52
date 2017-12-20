@@ -1,7 +1,7 @@
 .PHONY: all clean
 all: build
 clean:
-	rm -f crypter decrypt encrypt crypto.o main.o
+	rm -f decrypt encrypt crypto.o main.o
 runtest:
 
 crypto.o: crypto.c
@@ -9,4 +9,5 @@ crypto.o: crypto.c
 main.o: main.c
 	gcc -Wall -c main.c
 build: main.o crypto.o
-	gcc -o crypter main.o crypto.o
+	gcc -o encrypt main.o crypto.o
+	gcc -o decrypt main.o crypto.o
