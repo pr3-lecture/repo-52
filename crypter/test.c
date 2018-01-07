@@ -59,9 +59,7 @@ static char* allTests() {
 
     mu_run_test(decryptTest);
     mu_run_test(decryptTestFailInput);
-	
-    // E_KEY_ILLEGAL_CHAR in Main
-    
+
     return 0;
 }
 

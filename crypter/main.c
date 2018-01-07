@@ -24,32 +24,34 @@ int main(int argc, char* argv[]) {
             argv[1]++;
         }
 
+        // input buffer
+        char input[255];
+
         // check for input file
         if(argc == 3) {
-            char c;
             FILE* fp = fopen(argv[2], "r");
             if(fp != NULL) {
-                while((c = fgetc(fp)) != EOF) {
-                    // TODO - fread
-                    fclose(fp);
-                }
-            } else {
+                fgets(input, sizeof(input), fp);
                 fclose(fp);
+            } else {
                 fprintf(stderr, "Datei nicht lesbar\n");
+                fclose(fp);
                 return E_MESSAGE_ILLEGAL_CHAR;
             }
         }
-
-        // read from stdin
-        char input[255];
         
         if(argc == 2) {    
             printf("Bitte geben Sie ihr Klartextpasswort bzw. Cipher ein:\n");
             scanf("%s", input);
         }
 
+        // trim the input string
+        input[strcspn(input, "\r\n")] = 0;
+        printf("Eingabe: %s\n", input);
+        
         // setup output memory
-        char output[strlen(input)];
+        char output[sizeof(char) * strlen(input)];
+
 
         // setup the Key
         myKey->chars = key;
